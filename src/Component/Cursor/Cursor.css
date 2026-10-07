@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+.custom-cursor-dot {
+  position: fixed;
+  width: 7px;
+  height: 7px;
+  background: #1683ff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px rgba(22, 131, 255, 0.8);
+
+  transition:
+    width 0.2s ease,
+    height 0.2s ease,
+    transform 0.15s ease;
+}
+
+/* Outer ring */
+.custom-cursor-ring {
+  position: fixed;
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid rgba(22, 131, 255, 0.65);
+  border-radius: 50%;
+
+  pointer-events: none;
+  z-index: 99998;
+
+  transform: translate(-50%, -50%);
+
+  transition:
+    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* When cursor is over buttons / links */
+.custom-cursor-ring.cursor-hover {
+  width: 52px;
+  height: 52px;
+
+  border-color: rgba(22, 131, 255, 0.9);
+  background: rgba(22, 131, 255, 0.06);
+
+  box-shadow:
+    0 0 20px rgba(22, 131, 255, 0.15);
+}
+
+.custom-cursor-dot.cursor-click {
+  width: 10px;
+  height: 10px;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.custom-cursor-ring.cursor-click-ring {
+  width: 42px;
+  height: 42px;
+
+  background: rgba(22, 131, 255, 0.12);
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none;
+  }
+}

@@ -1,0 +1,1101 @@
+@import "tailwindcss";
+
+
+
+
+@font-face {
+  font-family: "Jim Nightshade";
+  src: url("./assets/fonts/JimNightshade-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================================
+   PORTFOLIO FONT
+========================================= */
+
+
+
+.font-space {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+
+.hero-bg-image {
+  opacity: 0;
+  transform: translateX(140px) scale(1.04);
+  filter:
+    grayscale(100%)
+    contrast(1.12)
+    brightness(0.78);
+
+  animation: heroImageReveal 1.4s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    0.25s
+    forwards;
+
+  will-change: transform, opacity;
+
+  mask-image: linear-gradient(
+    to left,
+    black 0%,
+    black 40%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to left,
+    black 0%,
+    black 40%,
+    transparent 100%
+  );
+}
+
+@keyframes heroImageReveal {
+  0% {
+    opacity: 8;
+    transform: translateX(140px) scale(1.04);
+  }
+
+  60% {
+    opacity: 0.64;
+  }
+
+  100% {
+    opacity: 0.70;
+    transform: translateX(0) scale(1.04);
+  }
+}
+
+/* =========================================
+   BLUE LIGHT
+========================================= */
+
+.hero-blue-light {
+  animation: blueLightMove 9s ease-in-out infinite alternate;
+}
+
+
+@keyframes blueLightMove {
+
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate3d(-80px, 50px, 0);
+    opacity: 0.9;
+  }
+
+}
+
+
+/* =========================================
+   HERO TEXT REVEAL
+========================================= */
+
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(25px);
+
+  animation:
+    heroReveal 0.9s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+
+@keyframes heroReveal {
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =================================
+   HERO HEADING
+================================= */
+
+.hero-title {
+  font-family: "Manrope", sans-serif;
+
+  font-weight: 500;
+
+  color: #f5f5f5;
+
+  line-height: 0.9;
+
+  letter-spacing: -0.065em;
+
+  margin: 0;
+
+  padding: 0;
+
+  max-width: 1250px;
+
+   padding-top: 50px;
+}
+
+
+.hero-line {
+  display: block;
+
+  white-space: nowrap;
+}
+
+
+/* Small breathing space between lines */
+
+.hero-line:nth-child(1) {
+  margin-bottom: 0.04em;
+}
+
+.hero-line:nth-child(2) {
+  margin-bottom: 0.04em;
+}
+
+
+/* Blue punctuation */
+
+.blue-dot {
+  color: #1683ff;
+
+  text-shadow:
+    0 0 12px rgba(22, 131, 255, 0.55);
+}
+
+
+/* =================================
+   DESKTOP
+================================= */
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: clamp(
+      100px,
+      9.5vw,
+      165px
+    );
+
+    /* Desktop par navbar se aur breathing space */
+    padding-top: 50px;
+  }
+}
+
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 1023px) {
+  .hero-title {
+    font-size: clamp(
+      75px,
+      12vw,
+      120px
+    );
+
+    padding-top: 50px;
+  }
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: clamp(
+      55px,
+      16vw,
+      85px
+    );
+
+    line-height: 0.92;
+
+    padding-top: 50px;
+  }
+}
+/* =========================================
+   HEADING AREA
+========================================= */
+
+.hero-heading-wrap {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+
+.hero-heading-wrap {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+/* Moving background area */
+.heading-motion-bg {
+  position: absolute;
+  inset: -35%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* Main blue light */
+.motion-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+  filter: blur(70px);
+}
+
+/* Left → Right movement */
+.motion-orb-one {
+  width: 500px;
+  height: 500px;
+
+  left: -15%;
+  top: 0;
+
+  background: radial-gradient(
+    circle,
+    rgba(22, 131, 255, 0.28) 0%,
+    rgba(22, 131, 255, 0.14) 30%,
+    rgba(22, 131, 255, 0.04) 55%,
+    transparent 72%
+  );
+
+  animation: headingGlowOne 7s ease-in-out infinite alternate;
+}
+
+/* Secondary soft light */
+.motion-orb-two {
+  width: 420px;
+  height: 420px;
+
+  right: -10%;
+  bottom: -10%;
+
+  background: radial-gradient(
+    circle,
+    rgba(100, 150, 255, 0.18) 0%,
+    rgba(100, 150, 255, 0.07) 40%,
+    transparent 72%
+  );
+
+  animation: headingGlowTwo 9s ease-in-out infinite alternate;
+}
+
+
+@keyframes headingGlowOne {
+  0% {
+    transform: translate3d(-80px, 40px, 0) scale(0.8);
+  }
+
+  50% {
+    transform: translate3d(220px, -30px, 0) scale(1.15);
+  }
+
+  100% {
+    transform: translate3d(520px, 40px, 0) scale(0.9);
+  }
+}
+
+
+@keyframes headingGlowTwo {
+  0% {
+    transform: translate3d(100px, 50px, 0) scale(0.8);
+  }
+
+  50% {
+    transform: translate3d(-120px, -40px, 0) scale(1.1);
+  }
+
+  100% {
+    transform: translate3d(-350px, 20px, 0) scale(0.9);
+  }
+}
+
+/* =========================================
+   GLOW MOVEMENT
+========================================= */
+
+@keyframes glowMoveOne {
+
+  0% {
+    transform: translate3d(-50px, 30px, 0) scale(0.8);
+  }
+
+  50% {
+    transform: translate3d(180px, -20px, 0) scale(1.15);
+  }
+
+  100% {
+    transform: translate3d(400px, 50px, 0) scale(0.95);
+  }
+
+}
+
+
+@keyframes glowMoveTwo {
+
+  0% {
+    transform: translate3d(100px, 60px, 0) scale(0.8);
+  }
+
+  50% {
+    transform: translate3d(-100px, -50px, 0) scale(1.1);
+  }
+
+  100% {
+    transform: translate3d(-350px, 20px, 0) scale(0.9);
+  }
+
+}
+
+
+/* =========================================
+   TEXT ENTRY ANIMATION
+========================================= */
+
+.hero-line {
+
+  display: block;
+
+  white-space: nowrap;
+
+  opacity: 0;
+
+  transform:
+    translateY(65px)
+    scale(0.97);
+
+  filter: blur(6px);
+
+  animation:
+    heroLineReveal
+    1.1s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    forwards;
+}
+
+
+.hero-line-one {
+  animation-delay: 0.1s;
+}
+
+
+.hero-line-two {
+  animation-delay: 0.28s;
+}
+
+
+.hero-line-three {
+  animation-delay: 0.46s;
+}
+
+
+@keyframes heroLineReveal {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(65px)
+      scale(0.97);
+
+    filter: blur(6px);
+  }
+
+  60% {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter: blur(0);
+  }
+
+}
+
+
+/* =========================================
+   BLUE DOT
+========================================= */
+
+.blue-dot {
+  color: #1683ff;
+
+  text-shadow:
+    0 0 12px rgba(22, 131, 255, 0.55);
+}
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.hero-description {
+
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  animation:
+    heroDescription
+    0.9s
+    0.8s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+
+@keyframes heroDescription {
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================================
+   HERO ACTION BUTTONS
+========================================= */
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-family: "Manrope", sans-serif;
+}
+
+
+/* =========================================
+   BASE BUTTON
+========================================= */
+
+.hero-action-btn {
+
+  position: relative;
+
+  min-width: 175px;
+  height: 56px;
+
+  padding: 0 18px 0 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 28px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.02em;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.45s ease,
+    background 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+
+/* =========================================
+   PROJECT BUTTON
+========================================= */
+
+.hero-project-btn {
+
+  color: #e8edf7;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  backdrop-filter: blur(12px);
+}
+
+
+.hero-project-btn:hover {
+
+  transform: translateY(-4px);
+
+  border-color: rgba(70, 135, 255, 0.65);
+
+  background: rgba(30, 90, 200, 0.10);
+
+  box-shadow:
+    0 12px 35px rgba(0, 80, 255, 0.15);
+}
+
+
+/* =========================================
+   LET'S TALK BUTTON
+========================================= */
+
+.hero-talk-btn {
+
+  color: white;
+
+  background: #1769e8;
+
+  border: 1px solid #3280ff;
+
+  box-shadow:
+    0 8px 25px rgba(23, 105, 232, 0.18);
+}
+
+
+.hero-talk-btn:hover {
+
+  transform: translateY(-4px);
+
+  background: #2878f0;
+
+  border-color: #5b9aff;
+
+  box-shadow:
+    0 15px 40px rgba(23, 105, 232, 0.35);
+}
+
+
+/* =========================================
+   TEXT
+========================================= */
+
+.hero-btn-text {
+
+  position: relative;
+
+  z-index: 3;
+
+  transition:
+    transform 0.4s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.hero-action-btn:hover .hero-btn-text {
+
+  transform: translateX(2px);
+}
+
+
+/* =========================================
+   ARROW
+========================================= */
+
+.hero-btn-arrow {
+
+  position: relative;
+
+  z-index: 3;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 17px;
+
+  transition:
+    transform 0.45s
+    cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.35s ease;
+}
+
+
+.hero-project-btn .hero-btn-arrow {
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: #75aaff;
+}
+
+
+.hero-talk-btn .hero-btn-arrow {
+
+  background: rgba(255, 255, 255, 0.15);
+
+  color: white;
+}
+
+
+.hero-action-btn:hover .hero-btn-arrow {
+
+  transform:
+    translateX(5px)
+    rotate(-4deg);
+
+}
+
+
+/* =========================================
+   MOVING LIGHT
+========================================= */
+
+.hero-btn-shine {
+
+  position: absolute;
+
+  top: 0;
+  left: -100%;
+
+  width: 55%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.14),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  pointer-events: none;
+
+  transition: left 0.8s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.hero-action-btn:hover .hero-btn-shine {
+
+  left: 140%;
+}
+
+
+/* =========================================
+   BUTTON PRESS
+========================================= */
+
+.hero-action-btn:active {
+
+  transform: translateY(-1px) scale(0.97);
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 640px) {
+
+  .hero-actions {
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    width: 100%;
+
+  }
+
+  .hero-action-btn {
+
+    width: 100%;
+
+    min-width: 0;
+
+  }
+
+}
+
+/* =========================================
+   SCROLL LINE
+========================================= */
+
+.scroll-line {
+
+  animation:
+    scrollLine
+    2s
+    ease-in-out
+    infinite;
+}
+
+
+@keyframes scrollLine {
+
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(180%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+
+}
+
+
+/* =========================================
+   REDUCE MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+
+  }
+
+}
+/* ================================
+   GLOBAL MOTION SYSTEM
+================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(70px);
+  filter: blur(8px);
+
+  transition:
+    opacity 1s ease,
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.1s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+
+/* Left reveal */
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  filter: blur(7px);
+
+  transition:
+    opacity 1s ease,
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.2s ease;
+}
+
+.reveal-left.show {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+}
+
+
+/* Right reveal */
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(100px);
+  filter: blur(7px);
+
+  transition:
+    opacity 1s ease,
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.2s ease;
+}
+
+.reveal-right.show {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+}
+
+
+/* Scale reveal */
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.88);
+  filter: blur(8px);
+
+  transition:
+    opacity 1s ease,
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.1s ease;
+}
+
+.reveal-scale.show {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+
+/* ================================
+   STAGGER DELAYS
+================================ */
+
+.delay-1 {
+  transition-delay: 0.1s;
+}
+
+.delay-2 {
+  transition-delay: 0.2s;
+}
+
+.delay-3 {
+  transition-delay: 0.3s;
+}
+
+.delay-4 {
+  transition-delay: 0.4s;
+}
+
+.delay-5 {
+  transition-delay: 0.5s;
+}
+
+
+/* ================================
+   BUTTON INTERACTION
+================================ */
+
+.interactive-button {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.interactive-button:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 30px rgba(22, 131, 255, 0.12);
+}
+
+
+/* ================================
+   REDUCED MOTION
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+
+}
+/* =========================
+   LET'S TALK BUTTON
+========================= */
+
+.hero-talk-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  padding: 14px 22px;
+
+  border: 1px solid rgba(22, 131, 255, 0.45);
+  border-radius: 8px;
+
+  background: rgba(22, 131, 255, 0.06);
+  color: #f5f5f5;
+
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Text */
+.hero-btn-text {
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+/* Arrow */
+.hero-btn-arrow {
+  position: relative;
+  z-index: 2;
+
+  color: #1683ff;
+  font-size: 18px;
+
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Shine */
+.hero-btn-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+
+  width: 60%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+/* Hover */
+.hero-talk-btn:hover {
+  transform: translateY(-3px);
+
+  background: rgba(22, 131, 255, 0.12);
+
+  border-color: #1683ff;
+
+  box-shadow:
+    0 10px 30px rgba(22, 131, 255, 0.14),
+    0 0 20px rgba(22, 131, 255, 0.08);
+}
+
+.hero-talk-btn:hover .hero-btn-arrow {
+  transform: translate(5px, -2px);
+}
+
+.hero-talk-btn:hover .hero-btn-shine {
+  left: 140%;
+}
+
+/* Click */
+.hero-talk-btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+/* =========================
+   RESUME BUTTON
+========================= */
+
+.hero-resume-btn {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  margin-top: 1px;
+  padding: 12px 18px;
+
+  width: fit-content;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #a5a5a5;
+
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.hero-resume-arrow {
+  color: #1683ff;
+  font-size: 16px;
+
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.hero-resume-btn:hover {
+  transform: translateY(-3px);
+
+  color: #f5f5f5;
+
+  border-color: rgba(22, 131, 255, 0.45);
+
+  background: rgba(22, 131, 255, 0.06);
+
+  box-shadow: 0 10px 28px rgba(22, 131, 255, 0.08);
+}
+
+.hero-resume-btn:hover .hero-resume-arrow {
+  transform: translateY(4px);
+  color: #1683ff;
+}
+
+.hero-resume-btn:active {
+  transform: translateY(-1px) scale(0.98);
+}

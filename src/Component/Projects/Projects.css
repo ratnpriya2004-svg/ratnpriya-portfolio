@@ -1,0 +1,670 @@
+@import "tailwindcss";
+
+/* =========================================
+   PROJECTS SECTION
+========================================= */
+
+.projects-section {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  padding: 120px 0;
+
+  overflow: hidden;
+
+  background: #050505;
+
+  color: #f5f5f5;
+
+  font-family: "Manrope", sans-serif;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.projects-heading-row,
+.projects-title {
+  width: min(1400px, calc(100% - 48px));
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* =========================================
+   TOP LABEL
+========================================= */
+
+.projects-heading-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  opacity: 0;
+
+  transform: translateY(30px);
+
+  filter: blur(5px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.9s ease,
+    filter 0.9s ease;
+}
+
+.projects-visible .projects-heading-row {
+  opacity: 1;
+
+  transform: translateY(0);
+
+  filter: blur(0);
+}
+
+
+.projects-dot {
+  width: 12px;
+
+  height: 12px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #1683ff;
+
+  box-shadow:
+    0 0 10px rgba(22, 131, 255, 0.7);
+}
+
+
+.projects-label {
+  color: #1683ff;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.25em;
+
+  white-space: nowrap;
+}
+
+
+.projects-line {
+  height: 1px;
+
+  flex: 1;
+
+  max-width: 320px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  transform-origin: left;
+
+  transform: scaleX(0);
+
+  transition:
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projects-visible .projects-line {
+  transform: scaleX(1);
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.projects-title {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-end;
+
+  gap: 50px;
+
+  margin-top: 65px;
+
+  margin-bottom: 65px;
+
+  opacity: 0;
+
+  transform: translateY(35px);
+
+  transition:
+    opacity 0.9s ease 0.15s,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.projects-visible .projects-title {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+.projects-title h2 {
+  margin: 0;
+
+  color: #f5f5f5;
+
+  font-size: clamp(55px, 7vw, 100px);
+
+  font-weight: 500;
+
+  line-height: 0.9;
+
+  letter-spacing: -0.065em;
+}
+
+
+.projects-title h2 span {
+  color: #1683ff;
+}
+
+
+.projects-title p {
+  max-width: 400px;
+
+  margin: 0;
+
+  color: #888;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================
+   MOVING AREA
+========================================= */
+
+.projects-window {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  padding: 15px 0 35px;
+}
+
+
+/* =========================================
+   RIGHT → LEFT TRACK
+========================================= */
+
+.projects-track {
+  display: flex;
+
+  width: max-content;
+
+  gap: 28px;
+
+  animation: projectMove 38s linear infinite;
+
+  will-change: transform;
+}
+
+
+/*
+   Cards continuously move
+   RIGHT → LEFT
+*/
+
+@keyframes projectMove {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+
+}
+
+
+/*
+   Hover = movement stops
+   so GitHub can be clicked
+*/
+
+.projects-window:hover .projects-track {
+  animation-play-state: paused;
+}
+
+
+/* =========================================
+   RECTANGULAR PROJECT CARD
+========================================= */
+
+.project-card {
+  position: relative;
+
+  flex: 0 0 390px;
+
+  width: 390px;
+
+  min-height: 500px;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: #0b0b0b;
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+
+.project-card:hover {
+  transform: translateY(-10px);
+
+  border-color: rgba(22, 131, 255, 0.55);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(22, 131, 255, 0.08);
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.project-image-box {
+  position: relative;
+
+  width: 100%;
+
+  height: 255px;
+
+  overflow: hidden;
+
+  background: #111;
+}
+
+
+.project-image {
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.project-card:hover .project-image {
+  transform: scale(1.06);
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.project-content {
+  position: relative;
+
+  padding: 25px 26px 28px;
+
+  background: #0b0b0b;
+
+  color: #ffffff;
+
+  /*
+    VERY IMPORTANT:
+    text ko invisible hone se rokega
+  */
+
+  opacity: 1;
+
+  visibility: visible;
+}
+
+
+/* =========================================
+   PROJECT NAME
+========================================= */
+
+.project-name-row {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 12px;
+}
+
+
+.project-blue-line {
+  width: 4px;
+
+  min-width: 4px;
+
+  height: 45px;
+
+  margin-top: 2px;
+
+  border-radius: 10px;
+
+  background: #1683ff;
+
+  box-shadow:
+    0 0 10px rgba(22, 131, 255, 0.55);
+}
+
+
+.project-name-row h3 {
+  margin: 0;
+
+  padding: 0;
+
+  color: #ffffff !important;
+
+  font-size: 25px;
+
+  font-weight: 600;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.03em;
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.project-description {
+  margin: 15px 0 0 16px;
+
+  color: #a5a5a5 !important;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
+}
+
+
+/* =========================================
+   TECHNOLOGIES
+========================================= */
+
+.project-tech {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 20px;
+
+  margin-left: 16px;
+}
+
+
+.project-tech span {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 7px 11px;
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: #bcbcbc !important;
+
+  font-size: 11px;
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
+
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background 0.3s ease;
+}
+
+
+.project-tech span:hover {
+  color: #ffffff !important;
+
+  border-color: rgba(22, 131, 255, 0.6);
+
+  background: rgba(22, 131, 255, 0.08);
+}
+
+
+/* =========================================
+   GITHUB
+========================================= */
+
+.project-github {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 24px;
+
+  margin-left: 16px;
+
+  padding: 10px 17px;
+
+  border: 1px solid rgba(22, 131, 255, 0.5);
+
+  border-radius: 999px;
+
+  background: rgba(22, 131, 255, 0.06);
+
+  color: #ffffff !important;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+.project-github:hover {
+  transform: translateY(-3px);
+
+  background: rgba(22, 131, 255, 0.14);
+
+  border-color: #1683ff;
+
+  box-shadow:
+    0 8px 25px rgba(22, 131, 255, 0.15);
+}
+
+
+.project-github span {
+  color: #1683ff !important;
+
+  font-size: 17px;
+}
+
+
+/* unavailable GitHub */
+
+.project-disabled {
+  opacity: 0.45 !important;
+
+  cursor: default;
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .projects-section {
+    padding: 90px 0;
+  }
+
+  .projects-heading-row,
+  .projects-title {
+    width: calc(100% - 36px);
+  }
+
+  .projects-title {
+    display: block;
+
+    margin-top: 55px;
+
+    margin-bottom: 45px;
+  }
+
+  .projects-title p {
+    margin-top: 25px;
+
+    font-size: 14px;
+  }
+
+  .project-card {
+    flex-basis: 320px;
+
+    width: 320px;
+
+    min-height: 450px;
+  }
+
+  .project-image-box {
+    height: 210px;
+  }
+
+  .project-content {
+    padding: 22px;
+  }
+
+  .project-name-row h3 {
+    font-size: 22px;
+  }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .projects-track {
+    animation: none;
+  }
+
+}
+/* =========================================
+   PROJECTS CONTACT BUTTON
+========================================= */
+
+.projects-contact-button {
+  margin-top: 28px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 13px 20px;
+
+  border: 1px solid rgba(22, 131, 255, 0.35);
+  border-radius: 8px;
+
+  background: rgba(22, 131, 255, 0.06);
+
+  color: #f5f5f5;
+
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.projects-contact-arrow {
+  color: #1683ff;
+  font-size: 17px;
+
+  transition: transform 0.3s ease;
+}
+
+.projects-contact-button:hover {
+  transform: translateY(-3px);
+
+  background: rgba(22, 131, 255, 0.12);
+
+  border-color: #1683ff;
+
+  box-shadow:
+    0 10px 30px rgba(22, 131, 255, 0.12);
+}
+
+.projects-contact-button:hover .projects-contact-arrow {
+  transform: translate(4px, -4px);
+}
